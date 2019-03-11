@@ -475,9 +475,9 @@ End
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h0
-		Function IDEVersion() As String
-		  Return Str(App.MajorVersion) + "." + Str(App.MinorVersion) + "." + Str(App.BugVersion)
+	#tag Method, Flags = &h21
+		Private Function IDEVersion() As String
+		  Return Str(App.MajorVersion) + "." + Str(App.MinorVersion) + "." + Str(App.BugVersion) + "." + Str(App.NonReleaseVersion)
 		End Function
 	#tag EndMethod
 
