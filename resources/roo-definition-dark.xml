@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<highlightDefinition version="1.4">
+	<name>Roo</name>
+	<contexts defaultColor="#ffffff" caseSensitive="yes">   
+            
+        <highlightContext name="Comment" highlightColor="#6c7986" italic="true">
+            <startRegEx>#</startRegEx>
+            <endRegEx>[\n\r]</endRegEx>
+        </highlightContext>
+        
+        <highlightContext name="StringDouble" highlightColor="#fc6a5d">
+			<entryRegEx>"[^"\r\n]*["\r\n]|&amp;u[[:xdigit:]]*\b</entryRegEx>
+        </highlightContext>
+
+        <highlightContext name="StringSingle" highlightColor="#fc6a5d">
+			<entryRegEx>'[^'\r\n]*['\r\n]|&amp;u[[:xdigit:]]*\b</entryRegEx>
+        </highlightContext>        
+		
+        <highlightContext name="Keywords" highlightColor="#fc5fa3" bold="true">
+            <keywords>       
+                <string>and</string>
+                <string>break</string>
+                <string>class</string>
+                <string>def</string>
+                <string>else</string>
+                <string>exit</string>
+                <string>for</string>
+                <string>if</string>
+                <string>module</string>
+                <string>not</string>
+                <string>or</string>
+                <string>pass</string>
+                <string>quit</string>
+                <string>require</string>
+                <string>return</string>
+                <string>self</string>
+                <string>static</string>
+                <string>super</string>
+                <string>var</string>
+                <string>while</string>
+            </keywords>
+        </highlightContext>
+        
+        <highlightContext name="BasicTypes" highlightColor="#fc5fa3" bold="true">
+            <keywords>
+				<string>Nothing</string>
+				<string>False</string>
+				<string>True</string>
+            </keywords>
+        </highlightContext>       
+        
+        <highlightContext name="Doubles" highlightColor="#9686f5">
+            <entryRegEx>(?&lt;=[^\w.&#x7F;-&#x10F7FF;]|^)(?=\d+\.|\.\d+|\d+e(?:\d|\b))(\d*\.\d*(?:e[-+]?\d*)?|\d+e[-+]?\d*)(?=[^\w.&#x7F;-&#x10F7FF;]|$)</entryRegEx>
+        </highlightContext>     
+        
+        <highlightContext name="Integers" highlightColor="#9686f5">
+            <entryRegEx>(?&lt;=[^\w.&#x7F;-&#x10F7FF;]|^)(?:\d+|0x[[:xdigit:]]*\b|0o[0-7]*\b|0b[01]*\b)(?=[^\w.&#x7F;-&#x10F7FF;]|$)</entryRegEx>
+        </highlightContext>     
+        
+		<highlightContext name="ClassDefinition" highlightColor="#91d462">
+			<entryRegEx>(?!class\s*)([A-Z_][a-zA-Z_\d]*(?=\s*:|\s*&lt;))</entryRegEx>
+        </highlightContext> 
+        
+		<highlightContext name="ClassInstance" highlightColor="#91d462">
+			<entryRegEx>(?&lt;!=)[A-Z_][a-zA-Z_\d]*(?=\(.*\))</entryRegEx>
+        </highlightContext>
+        
+        <highlightContext name="Function" highlightColor="#99e8d5">
+			<entryRegEx>([a-zA-Z_][a-zA-Z_\d]*\!?\??(?=\(.*\)))</entryRegEx>
+        </highlightContext>  
+
+        <highlightContext name="Getter" highlightColor="#99e8d5">
+            <entryRegEx>(?&#x3C;=def )([a-zA-Z_][a-zA-Z_\d]*\!?\??(?=:))</entryRegEx>
+        </highlightContext>  
+	</contexts>
+</highlightDefinition>

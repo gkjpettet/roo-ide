@@ -1,0 +1,40 @@
+#tag MultiImage
+Image blockEndMarker
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAGgAAAAAAGgAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAAAAAAAAQkQAAf////8SYmxvY2tFbmRNYXJrZXIuYm1wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////wAAAAAAAAAAAAAAAP////8AAAogY3UAAAAAAAAAAAAAAAAABGltZ3MAAgBSLzpVc2VyczpnYXJyeTpSZXBvczpyb28tZGVza3RvcDpDbGFzc2ljOlVJOkN1c3RvbUVkaXRGaWVsZDppbWdzOmJsb2NrRW5kTWFya2VyLmJtcAAOACYAEgBiAGwAbwBjAGsARQBuAGQATQBhAHIAawBlAHIALgBiAG0AcAAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAFBVc2Vycy9nYXJyeS9SZXBvcy9yb28tZGVza3RvcC9DbGFzc2ljL1VJL0N1c3RvbUVkaXRGaWVsZC9pbWdzL2Jsb2NrRW5kTWFya2VyLmJtcAATAAEvAAAVAAIADP//AAAAAAAAAAA=
+		FullPath = /Users/garry/Repos/roo-desktop/Classic/UI/CustomEditField/imgs/blockEndMarker.bmp
+		PartialPath = ..\..\roo-desktop\Classic\UI\CustomEditField\imgs\blockEndMarker.bmp
+		#tag ImageSpecification
+			Comment = 
+			Device = 31
+			HSize = 18.00
+			Orientation = Any
+			Platform = 15
+			PPI = 72
+			VSize = 9.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 31
+			HSize = 18.00
+			Orientation = Any
+			Platform = 15
+			PPI = 144
+			VSize = 9.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 31
+			HSize = 18.00
+			Orientation = Any
+			Platform = 15
+			PPI = 216
+			VSize = 9.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+End Image
+#tag EndMultiImage
