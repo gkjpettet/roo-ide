@@ -94,50 +94,31 @@ Begin Menu MainMenuBar
          Visible = True
       End
    End
-   Begin MenuItem WindowMenu
+   Begin MenuItem DevelopMenu
       SpecialMenu = 0
-      Text = "Window"
+      Text = "Develop"
       Index = -2147483648
       AutoEnable = True
       Visible = True
-      Begin MenuItem WindowScannerTest
+      Begin MenuItem DevelopRunCode
          SpecialMenu = 0
-         Text = "Scanner Test"
+         Text = "Run Code"
          Index = -2147483648
-         ShortcutKey = "1"
-         Shortcut = "Cmd+1"
+         ShortcutKey = "R"
+         Shortcut = "Cmd+R"
          MenuModifier = True
-         AutoEnable = True
+         AutoEnable = False
          Visible = True
       End
-      Begin MenuItem WindowParserTest
+      Begin MenuItem DevelopTokenise
          SpecialMenu = 0
-         Text = "Parser Test"
+         Text = "Tokenise"
          Index = -2147483648
-         ShortcutKey = "2"
-         Shortcut = "Cmd+2"
+         ShortcutKey = "T"
+         Shortcut = "Cmd+Option+T"
          MenuModifier = True
-         AutoEnable = True
-         Visible = True
-      End
-      Begin MenuItem WindowAnalyserTest
-         SpecialMenu = 0
-         Text = "Analyser Test"
-         Index = -2147483648
-         ShortcutKey = "3"
-         Shortcut = "Cmd+3"
-         MenuModifier = True
-         AutoEnable = True
-         Visible = True
-      End
-      Begin MenuItem WindowInterpreterTest
-         SpecialMenu = 0
-         Text = "Interpreter Test"
-         Index = -2147483648
-         ShortcutKey = "4"
-         Shortcut = "Cmd+4"
-         MenuModifier = True
-         AutoEnable = True
+         MacOptionKey = True
+         AutoEnable = False
          Visible = True
       End
    End

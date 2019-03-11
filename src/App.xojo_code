@@ -9,10 +9,36 @@ Inherits Application
 		End Sub
 	#tag EndEvent
 
+	#tag Event
+		Sub EnableMenuItems()
+		  DevelopRunCode.Enabled = WinIDE.CodeField.Text <> ""
+		  DevelopTokenise.Enabled = (WinIDE.CodeField.Text <> "") Or (WinIDE.CurrentScriptFile <> Nil)
+		End Sub
+	#tag EndEvent
+
 
 	#tag MenuHandler
-		Function WindowScannerTest() As Boolean Handles WindowScannerTest.Action
-			WinScannerTest.Show
+		Function DevelopRunCode() As Boolean Handles DevelopRunCode.Action
+			// Clear any previous output.
+			WinIDE.AreaOutput.Text = ""
+			
+			// Execute the source code.
+			WinIDE.Interpreter.Interpret(WinIDE.CodeField.Text)
+			
+			Return True
+			
+		End Function
+	#tag EndMenuHandler
+
+	#tag MenuHandler
+		Function DevelopTokenise() As Boolean Handles DevelopTokenise.Action
+			If WinIDE.CurrentScriptFile <> Nil Then
+			WinScanner.Reset
+			WinScanner.Tokenise(WinIDE.CurrentScriptFile)
+			Else
+			WinScanner.Reset
+			WinScanner.Tokenise(WinIDE.CodeField.Text)
+			End If
 			
 			Return True
 			

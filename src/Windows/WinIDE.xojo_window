@@ -74,12 +74,12 @@ Begin Window WinIDE
       Visible         =   True
       Width           =   794
    End
-   Begin PushButton ButtonInterpret
+   Begin PushButton ButtonRunCode
       AutoDeactivate  =   True
       Bold            =   False
       ButtonStyle     =   "0"
       Cancel          =   False
-      Caption         =   "Interpret"
+      Caption         =   "Run Code"
       Default         =   False
       Enabled         =   False
       Height          =   20
@@ -87,7 +87,7 @@ Begin Window WinIDE
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   731
+      Left            =   720
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -104,7 +104,7 @@ Begin Window WinIDE
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   83
+      Width           =   94
    End
    Begin PushButton ButtonReset
       AutoDeactivate  =   True
@@ -119,7 +119,7 @@ Begin Window WinIDE
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   538
+      Left            =   527
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -309,12 +309,12 @@ Begin Window WinIDE
       Visible         =   True
       Width           =   780
    End
-   Begin PushButton ButtonLoadFile
+   Begin PushButton ButtonRunFile
       AutoDeactivate  =   True
       Bold            =   False
       ButtonStyle     =   "0"
       Cancel          =   False
-      Caption         =   "Load File..."
+      Caption         =   "Run File..."
       Default         =   False
       Enabled         =   False
       Height          =   20
@@ -322,7 +322,7 @@ Begin Window WinIDE
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   630
+      Left            =   619
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -403,7 +403,7 @@ End
 		  AppearanceChanged
 		  
 		  // Put Roo's version number in the window title.
-		  Self.Title = "Roo (" + Roo.Version + ")" + If(Interpreter.kDebugMode, " - Debug Mode", "")
+		  Self.Title = "Roo IDE (Roo v" + Roo.Version + ", IDE v" + IDEVersion + ")" + If(Interpreter.kDebugMode, " - Debug Mode", "")
 		  
 		  // Start the UI timer.
 		  MyUITimer.Enabled = True
@@ -473,6 +473,12 @@ End
 		  " was prevented by the interpreter." + EndOfLine
 		  
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function IDEVersion() As String
+		  Return Str(App.MajorVersion) + "." + Str(App.MinorVersion) + "." + Str(App.BugVersion)
+		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
@@ -604,17 +610,24 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		CurrentScriptFile As FolderItem
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		Interpreter As RooInterpreter
 	#tag EndProperty
 
 
 #tag EndWindowCode
 
-#tag Events ButtonInterpret
+#tag Events ButtonRunCode
 	#tag Event
 		Sub Action()
 		  // Clear any previous output.
 		  AreaOutput.Text = ""
+		  
+		  // Clear any reference to previously executed files.
+		  CurrentScriptFile = Nil
 		  
 		  // Execute the source code.
 		  Interpreter.Interpret(CodeField.Text)
@@ -629,7 +642,7 @@ End
 		  CodeField.Text = ""
 		  AreaOutput.Text = ""
 		  Interpreter.ForceKill = True
-		  
+		  CurrentScriptFile = Nil
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -676,18 +689,18 @@ End
 		End Function
 	#tag EndEvent
 #tag EndEvents
-#tag Events ButtonLoadFile
+#tag Events ButtonRunFile
 	#tag Event
 		Sub Action()
 		  // Clear any previous output.
 		  AreaOutput.Text = ""
 		  
 		  // Get the file to interpret.
-		  Dim f As FolderItem = GetOpenFolderItem("")
-		  If f = Nil Then Return
+		  CurrentScriptFile = GetOpenFolderItem("")
+		  If CurrentScriptFile = Nil Then Return
 		  
 		  // Execute the source code.
-		  Interpreter.Interpret(f)
+		  Interpreter.Interpret(CurrentScriptFile)
 		  
 		End Sub
 	#tag EndEvent

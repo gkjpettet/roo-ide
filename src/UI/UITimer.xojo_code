@@ -6,8 +6,8 @@ Inherits Timer
 		  If WinIDE.Interpreter = Nil Then Return
 		  
 		  WinIDE.ButtonStop.Enabled = WinIDE.Interpreter.IsRunning
-		  WinIDE.ButtonLoadFile.Enabled = Not WinIDE.Interpreter.IsRunning
-		  WinIDE.ButtonInterpret.Enabled = WinIDE.CodeField.Text.Len > 0 And Not WinIDE.Interpreter.IsRunning
+		  WinIDE.ButtonRunFile.Enabled = Not WinIDE.Interpreter.IsRunning
+		  WinIDE.ButtonRunCode.Enabled = WinIDE.CodeField.Text.Len > 0 And Not WinIDE.Interpreter.IsRunning
 		  
 		End Sub
 	#tag EndEvent

@@ -1,5 +1,5 @@
 #tag Window
-Begin Window WinScannerTest
+Begin Window WinScanner
    BackColor       =   &cFFFFFF00
    Backdrop        =   0
    CloseButton     =   True
@@ -23,129 +23,17 @@ Begin Window WinScannerTest
    MinWidth        =   64
    Placement       =   0
    Resizeable      =   True
-   Title           =   "Classic Roo Scanner Test"
+   Title           =   "Tokens"
    Visible         =   True
    Width           =   700
-   Begin CodeArea SourceCode
-      AcceptTabs      =   True
-      Alignment       =   0
-      AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   True
-      BackColor       =   &cFFFFFF00
-      Bold            =   False
-      Border          =   True
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   187
-      HelpTag         =   ""
-      HideSelection   =   True
-      Index           =   -2147483648
-      Italic          =   False
-      Left            =   20
-      LimitText       =   0
-      LineHeight      =   0.0
-      LineSpacing     =   1.0
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   True
-      LockTop         =   True
-      Mask            =   ""
-      Multiline       =   True
-      ReadOnly        =   False
-      Scope           =   2
-      ScrollbarHorizontal=   False
-      ScrollbarVertical=   True
-      Styled          =   True
-      TabIndex        =   0
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   "class Math:\n	static def square(n):\n		return n * n\n\nprint(Math.square(3)) # Prints ""9""."
-      TextColor       =   &c00000000
-      TextFont        =   "Consolas"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   20
-      Transparent     =   False
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   660
-   End
-   Begin PushButton ButtonTokenise
-      AutoDeactivate  =   True
-      Bold            =   False
-      ButtonStyle     =   "0"
-      Cancel          =   False
-      Caption         =   "Tokenise"
-      Default         =   False
-      Enabled         =   True
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   600
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   False
-      LockRight       =   True
-      LockTop         =   True
-      Scope           =   2
-      TabIndex        =   1
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "Consolas"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   218
-      Transparent     =   False
-      Underline       =   False
-      Visible         =   True
-      Width           =   80
-   End
-   Begin PushButton ButtonReset
-      AutoDeactivate  =   True
-      Bold            =   False
-      ButtonStyle     =   "0"
-      Cancel          =   False
-      Caption         =   "Reset"
-      Default         =   False
-      Enabled         =   True
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   508
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   2
-      TabIndex        =   2
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "Consolas"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   219
-      Transparent     =   False
-      Underline       =   False
-      Visible         =   True
-      Width           =   80
-   End
    Begin Listbox ListboxTokens
       AutoDeactivate  =   True
       AutoHideScrollbars=   True
       Bold            =   False
       Border          =   True
       ColumnCount     =   5
-      ColumnsResizable=   False
-      ColumnWidths    =   "50, 50, 100, *, 2*"
+      ColumnsResizable=   True
+      ColumnWidths    =   "50, 50, 120, 1.7*, *"
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -156,12 +44,12 @@ Begin Window WinScannerTest
       GridLinesVertical=   0
       HasHeading      =   True
       HeadingIndex    =   -1
-      Height          =   327
+      Height          =   535
       HelpTag         =   ""
       Hierarchical    =   False
       Index           =   -2147483648
       InitialParent   =   ""
-      InitialValue    =   "Line	Start	Type	File Name	Lexeme"
+      InitialValue    =   "Line	Start	Type	Lexeme	File"
       Italic          =   False
       Left            =   20
       LockBottom      =   True
@@ -181,7 +69,7 @@ Begin Window WinScannerTest
       TextFont        =   "Consolas"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   253
+      Top             =   13
       Transparent     =   False
       Underline       =   False
       UseFocusRing    =   False
@@ -190,7 +78,7 @@ Begin Window WinScannerTest
       _ScrollOffset   =   0
       _ScrollWidth    =   -1
    End
-   Begin Label Info
+   Begin Label InfoLabel
       AutoDeactivate  =   True
       Bold            =   False
       DataField       =   ""
@@ -202,54 +90,118 @@ Begin Window WinScannerTest
       InitialParent   =   ""
       Italic          =   False
       Left            =   20
-      LockBottom      =   False
+      LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
+      LockRight       =   True
+      LockTop         =   False
       Multiline       =   False
       Scope           =   2
       Selectable      =   False
       TabIndex        =   4
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   ""
+      Text            =   "Info"
       TextAlign       =   0
       TextColor       =   &c00000000
-      TextFont        =   "Consolas"
+      TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   219
+      Top             =   560
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   384
+      Width           =   667
    End
 End
 #tag EndWindow
 
 #tag WindowCode
 	#tag Method, Flags = &h21
-		Private Sub ScannerError(sender As RooScanner, file As FolderItem, message As String, line As Integer, position As Integer)
-		  #Pragma Unused sender
-		  #Pragma Unused file
-		  #Pragma Unused message
-		  #Pragma Unused line
-		  #Pragma Unused position
+		Private Sub ActuallyTokenise()
+		  AddHandler Scanner.Error, AddressOf ScannerError
+		  
+		  Redim Tokens(-1)
+		  InfoLabel.Text = ""
+		  HasError = False
+		  
+		  // Start timing.
+		  Dim start As Double = Microseconds
+		  
+		  // Tokenise the source code.
+		  Tokens = scanner.Scan
+		  
+		  // Stop timing.
+		  Dim ms As Double = (Microseconds - start)/1000
+		  
+		  // Update the tokens listbox.
+		  UpdateListbox
+		  
+		  // Update the info label.
+		  If Not HasError Then
+		    InfoLabel.Text = Str(Tokens.Ubound + 1) + " tokens created in " + Str(ms, "####.#") + " ms"
+		  End If
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Reset()
+		  Redim Tokens(-1)
+		  HasError = False
+		  InfoLabel.Text = ""
+		  ListboxTokens.DeleteAllRows
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub UpdateListbox(tokens() As RooToken)
+		Private Sub ScannerError(sender As RooScanner, file As FolderItem, message As String, line As Integer, position As Integer)
+		  #Pragma Unused sender
+		  
+		  ListboxTokens.DeleteAllRows
+		  
+		  HasError = True
+		  
+		  InfoLabel.Text = "Error (" + Str(line) + ", " + Str(position) + "): " + _
+		  message + If(file <> Nil, "(" + file.Name + ")", "")
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Tokenise(f As FolderItem)
+		  If f = Nil Then
+		    MsgBox("Cannot tokenise file. It is Nil")
+		    Return
+		  End If
+		  
+		  Scanner = New RooScanner(f)
+		  
+		  ActuallyTokenise
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Tokenise(source As String)
+		  Scanner = New RooScanner(source)
+		  
+		  ActuallyTokenise
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub UpdateListbox()
 		  ListboxTokens.DeleteAllRows
 		  
 		  Const kColLine = 0
 		  Const kColStart = 1
 		  Const kColType = 2
-		  Const kColFileName = 3
-		  Const kColLexeme = 4
+		  Const kColLexeme = 3
+		  Const kColFileName = 4
 		  
-		  For Each t As RooToken In tokens
+		  For Each t As RooToken In Tokens
 		    
 		    Dim line As String = Str(t.Line)
 		    Dim start As String = Str(t.Start)
@@ -269,38 +221,21 @@ End
 	#tag EndMethod
 
 
+	#tag Property, Flags = &h0
+		HasError As Boolean = False
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		Scanner As RooScanner
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		Tokens() As RooToken
+	#tag EndProperty
+
+
 #tag EndWindowCode
 
-#tag Events ButtonTokenise
-	#tag Event
-		Sub Action()
-		  // Setup a new scanner.
-		  Dim scanner As New RooScanner(SourceCode.Text)
-		  AddHandler scanner.Error, AddressOf Self.ScannerError
-		  
-		  // Tokenise the source code.
-		  Dim start As Double = Microseconds
-		  Dim tokens() As RooToken = scanner.Scan
-		  
-		  // Update the info.
-		  Dim ms As Integer = (Microseconds - start)/1000
-		  Info.Text = Str(tokens.Ubound + 1) + " tokens in " + _
-		  Str(ms) + " ms"
-		  
-		  // Update the token listbox.
-		  UpdateListbox(tokens)
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events ButtonReset
-	#tag Event
-		Sub Action()
-		  SourceCode.Text = ""
-		  Info.Text = ""
-		  ListboxTokens.DeleteAllRows
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="Name"
