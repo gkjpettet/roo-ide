@@ -342,7 +342,6 @@ Begin Window WinIDE
       Width           =   89
    End
    Begin UITimer MyUITimer
-      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Mode            =   2
@@ -436,22 +435,25 @@ End
 
 	#tag Method, Flags = &h0
 		Sub AppearanceChanged()
-		  // Called by the App.AppearanceChanged event. 
-		  // The user has globally changed from light to dark mode or vice versa.
+		  // Called by the App.AppearanceChanged event and the theme toggle menuitem 
+		  // in the View menu. 
+		  // Handles switching from light to dark mode and vice versa.
 		  
 		  Const kLeftMarginOffset = 10
 		  
 		  LoadSyntaxDefinition
 		  
-		  If IsDarkMode Then
+		  // Select the correct theme.
+		  If App.CurrentTheme = Theme.Dark Then
 		    SetDarkModeColours
-		  Else
+		  ElseIf App.CurrentTheme = Theme.Light Then
 		    SetLightModeColours
 		  End If
 		  
 		  // Generic CodeField properties.
 		  CodeField.LeftMarginOffset = kLeftMarginOffset
 		  
+		  // Update the codefield.
 		  CodeField.Redraw
 		  
 		End Sub
@@ -499,7 +501,7 @@ End
 
 	#tag Method, Flags = &h21
 		Private Sub LoadSyntaxDefinition()
-		  Dim defName As Text = If(IsDarkMode, "roo-definition-dark.xml", "roo-definition-light.xml")
+		  Dim defName As Text = If(App.CurrentTheme = Theme.Dark, "roo-definition-dark.xml", "roo-definition-light.xml")
 		  
 		  Dim f as FolderItem
 		  

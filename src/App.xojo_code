@@ -5,6 +5,7 @@ Inherits Application
 		Sub AppearanceChanged()
 		  // The user has changed light/dark mode.
 		  
+		  CurrentTheme = If(IsDarkMode, Theme.Dark, Theme.Light)
 		  WinIDE.AppearanceChanged
 		End Sub
 	#tag EndEvent
@@ -13,6 +14,26 @@ Inherits Application
 		Sub EnableMenuItems()
 		  DevelopRunCode.Enabled = WinIDE.CodeField.Text <> ""
 		  DevelopTokenise.Enabled = (WinIDE.CodeField.Text <> "") Or (WinIDE.CurrentScriptFile <> Nil)
+		  
+		  // Configure the dark theme item.
+		  DevelopUseDarkTheme.Enabled = True
+		  Select Case CurrentTheme
+		  Case Theme.Light
+		    DevelopUseDarkTheme.Checked = False
+		  Case Theme.Dark
+		    DevelopUseDarkTheme.Checked = True
+		  End Select
+		  
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Open()
+		  If IsDarkMode Then
+		    CurrentTheme = Theme.Dark
+		  Else
+		    CurrentTheme = Theme.Light
+		  End If
 		End Sub
 	#tag EndEvent
 
@@ -44,6 +65,27 @@ Inherits Application
 			
 		End Function
 	#tag EndMenuHandler
+
+	#tag MenuHandler
+		Function DevelopUseDarkTheme() As Boolean Handles DevelopUseDarkTheme.Action
+			Select Case App.CurrentTheme
+			Case Theme.Light
+			App.CurrentTheme = Theme.Dark
+			Case Theme.Dark
+			App.CurrentTheme = Theme.Light
+			End Select
+			
+			WinIDE.AppearanceChanged
+			
+			Return True
+			
+		End Function
+	#tag EndMenuHandler
+
+
+	#tag Property, Flags = &h0
+		CurrentTheme As Theme
+	#tag EndProperty
 
 
 	#tag Constant, Name = kEditClear, Type = String, Dynamic = False, Default = \"&Delete", Scope = Public
