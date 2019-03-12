@@ -37,6 +37,12 @@ Inherits Application
 		End Sub
 	#tag EndEvent
 
+	#tag Event
+		Function UnhandledException(error As RuntimeException) As Boolean
+		  MsgBox("A fatal error has occurred: " + error.Message)
+		End Function
+	#tag EndEvent
+
 
 	#tag MenuHandler
 		Function DevelopRunCode() As Boolean Handles DevelopRunCode.Action
