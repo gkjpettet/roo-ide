@@ -461,4 +461,10 @@ End
 		Type="Boolean"
 		EditorType="Boolean"
 	#tag EndViewProperty
+	#tag ViewProperty
+		Name="HasError"
+		Group="Behavior"
+		InitialValue="False"
+		Type="Boolean"
+	#tag EndViewProperty
 #tag EndViewBehavior

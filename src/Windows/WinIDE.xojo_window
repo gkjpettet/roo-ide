@@ -342,6 +342,7 @@ Begin Window WinIDE
       Width           =   89
    End
    Begin UITimer MyUITimer
+      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Mode            =   2
