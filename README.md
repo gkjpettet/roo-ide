@@ -18,7 +18,7 @@ I provide pre-built binaries for macOS and 64-bit Windows. You can find them in 
 
 Number `3` above might require a little clarification. Xojo provides a mechanism for making classes and modules _external_ to a project. This means that you can make changes to those classes and have them reflected in _all_ of your projects which use them. Since I maintain the [reference command line interpreter][cli] as well I keep the actual classes in that repo. You can find them in the [cli repo][cli] under `src/core/Roo`. Download that repo and when the Xojo IDE asks you for the location of the various Roo classes, simply navigate to them and select them. You only need to do this once.
 
-4. Comment out the contents of the `PublishMac` and `PublishWin` IDE scripts in the `Build Settings` section of Xojo's navigator. These are only there to help me when I build releases to publish on GitHub. They are not needed for you to build the app and will only generate an error for you
+4. Comment out the contents of the `PublishMac` and `PublishWin` IDE scripts in the `Build Settings` section of Xojo's navigator. These are only there to help me when I build releases to publish on GitHub. They are not needed for you to build the app and will only generate an error for you.
 
 ## Extras
 
