@@ -6,7 +6,7 @@ The Roo IDE is a simple integrated development environment that makes it easier 
 
 The IDE provides a text editor that will colour Roo syntax as you type. You can execute the Roo code that you've typed from within the IDE or you can load a Roo script file from disk. There is a toggle for enabling/disabling network access for scripts so you can assess the behviour of your code in environments where networking has been prohibited. If you're interested, you can even view the output of the scanner to inspect the individual tokens created just prior to script execution.
 
-Finally, the IDE supports dark mode on macOS and provides two themes (light and dark) which you can switch between on both macOs and Windows.
+The IDE supports dark mode on macOS and provides two themes (light and dark) which you can switch between on both macOS and Windows.
 
 ## Building
 
