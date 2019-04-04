@@ -114,6 +114,11 @@ Inherits Application
 			Name="CurrentTheme"
 			Group="Behavior"
 			Type="Theme"
+			EditorType="Enum"
+			#tag EnumValues
+				"0 - Dark"
+				"1 - Light"
+			#tag EndEnumValues
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

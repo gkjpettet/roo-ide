@@ -405,6 +405,7 @@ End
 		  // Start the UI timer.
 		  MyUITimer.Enabled = True
 		  
+		  
 		End Sub
 	#tag EndEvent
 
