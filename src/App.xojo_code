@@ -110,6 +110,11 @@ Inherits Application
 
 
 	#tag ViewBehavior
+		#tag ViewProperty
+			Name="CurrentTheme"
+			Group="Behavior"
+			Type="Theme"
+		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class
 #tag EndClass

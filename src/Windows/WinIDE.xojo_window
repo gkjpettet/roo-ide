@@ -390,10 +390,7 @@ End
 		Sub Open()
 		  // Create and configure an interpreter.
 		  Interpreter = New RooInterpreter
-		  AddHandler Interpreter.ScannerError, AddressOf Self.ScannerError
-		  AddHandler Interpreter.ParserError, AddressOf Self.ParserError
-		  AddHandler Interpreter.AnalyserError, AddressOf Self.AnalyserError
-		  AddHandler Interpreter.RuntimeError, AddressOf Self.RuntimeError
+		  AddHandler Interpreter.ErrorOccurred, AddressOf Self.ErrorOccurred
 		  AddHandler Interpreter.Print, AddressOf Self.PrintDelegate
 		  AddHandler Interpreter.Input, AddressOf Self.InputDelegate
 		  AddHandler Interpreter.AllowNetworkAccess, AddressOf AllowNetworkAccessDelegate
@@ -422,15 +419,6 @@ End
 		  Return EnableNetworking.Value
 		  
 		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub AnalyserError(sender As RooInterpreter, token As RooToken, message As String)
-		  #Pragma Unused sender
-		  
-		  AreaOutput.Text = AreaOutput.Text + _
-		  "Analyser error (" + Str(token.Line) + ", " + Str(token.Start) + "): " + message + EndOfLine
-		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
@@ -474,6 +462,33 @@ End
 		  "An attempt to delete the FolderItem " + QUOTE + itemName + QUOTE + _
 		  " from the script " + QUOTE + scriptName + QUOTE + _
 		  " was prevented by the interpreter." + EndOfLine
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub ErrorOccurred(sender As RooInterpreter, type As RooInterpreter.ErrorType, where As RooToken, message As String)
+		  #Pragma Unused sender
+		  
+		  // What kind of error occurred?
+		  Dim kind As String
+		  Select Case type
+		  Case RooInterpreter.ErrorType.Analyser
+		    kind = "Analyser"
+		  Case RooInterpreter.ErrorType.Parser
+		    kind = "Parser"
+		  Case RooInterpreter.ErrorType.Runtime
+		    kind = "Runtime"
+		  Case RooInterpreter.ErrorType.Scanner
+		    kind = "Scanner"
+		  End Select
+		  
+		  // Did the error occur in a file or from direct input?
+		  Dim fileName As String = If(where.File = Nil, "direct input", where.File.NativePath)
+		  
+		  // Show the formatted error message.
+		  AreaOutput.Text = AreaOutput.Text + kind + " error (" + fileName + ")" + EndOfLine + _
+		  "(" + Str(where.Line) + ", " + Str(where.Start) + "): " + message + EndOfLine
 		  
 		End Sub
 	#tag EndMethod
@@ -531,43 +546,10 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Sub ParserError(sender As RooInterpreter, where As RooToken, message As String)
-		  #Pragma Unused sender
-		  
-		  AreaOutput.Text = AreaOutput.Text + "Parser error (" + Str(where.Line) + ", " + _
-		  Str(where.Start) + "): " + message + EndOfLine
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
 		Private Sub PrintDelegate(sender As RooInterpreter, what As String)
 		  #Pragma Unused sender
 		  
 		  AreaOutput.Text = AreaOutput.Text + what + EndOfLine
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub RuntimeError(sender As RooInterpreter, where As RooToken, message As String)
-		  #Pragma Unused sender
-		  
-		  Dim fileName As String = If(where.File = Nil, "", where.File.NativePath + " ")
-		  
-		  AreaOutput.Text = AreaOutput.Text + _
-		  fileName + "(" + Str(where.Line) + ", " + _
-		  Str(where.Start) + "). Runtime error: " + message + EndOfLine
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h21
-		Private Sub ScannerError(sender As RooInterpreter, file As FolderItem, message As String, line As Integer, position As Integer)
-		  #Pragma Unused sender
-		  
-		  Dim fileName As String = If(file = Nil, "Direct input.", file.NativePath + ", ")
-		  
-		  AreaOutput.Text = AreaOutput.Text + "Scanner error." + EndOfLine + "File: " + fileName + _ 
-		  EndOfLine + "Line: " + Str(line) + ", Pos: " + Str(position) + EndOfLine + _
-		  "Message: " + message + EndOfLine
 		End Sub
 	#tag EndMethod
 
