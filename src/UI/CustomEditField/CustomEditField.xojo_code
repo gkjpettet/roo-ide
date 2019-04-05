@@ -4022,9 +4022,6 @@ Implements MessageReceiver
 		    Return
 		  end if
 		  
-		  'if Graphics = nil then Return
-		  '#pragma warning "What is the point of this check? Can it be done another way?"
-		  
 		  //see if caret is visible
 		  dim ScrollPosition as Integer = self.ScrollPosition
 		  if EnableLineFoldings then ScrollPosition = lines.getNumberOfLinesNeededToView(ScrollPosition)
