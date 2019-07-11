@@ -32,7 +32,7 @@ In this folder you'll find syntax definition XML files for the Roo programming l
 
 This folder contains some example scripts. 
 
-[roolang]: https://roolang.org
+[roolang]: https://garrypettet.com/roo
 [ide releases]: https://github.com/gkjpettet/roo-ide/releases
 [cli]: https://github.com/gkjpettet/roo
 [cef]: https://github.com/tempelmann/custom-editfield
