@@ -112,7 +112,9 @@ Inherits Application
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="CurrentTheme"
+			Visible=false
 			Group="Behavior"
+			InitialValue=""
 			Type="Theme"
 			EditorType="Enum"
 			#tag EnumValues
