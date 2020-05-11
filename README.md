@@ -10,15 +10,20 @@ The IDE supports dark mode on macOS and provides two themes (light and dark) whi
 
 ## Building
 
-I provide pre-built binaries for macOS and 64-bit Windows. You can find them in the [releases section][ide releases]. To build the IDE from source yourself you'll need to do the following:
+I provide pre-built binaries for macOS and 64-bit Windows. You can find them in the [releases section][ide releases]. To build the IDE from source yourself you have two choices:
+
+### 1. Use the "Xojo Project Format Project File
 
 1. Clone the repo (or download it as a ZIP file)
 2. Launch the `src/Roo IDE.xojo_project` file in Xojo
 3. Resolve the missing Roo class dependencies
+4. Comment out the contents of the `PublishMac` and `PublishWin` IDE scripts in the `Build Settings` section of Xojo's navigator. These are only there to help me when I build releases to publish on GitHub. They are not needed for you to build the app and will only generate an error for you.
 
 Number `3` above might require a little clarification. Xojo provides a mechanism for making classes and modules _external_ to a project. This means that you can make changes to those classes and have them reflected in _all_ of your projects which use them. Since I maintain the [reference command line interpreter][cli] as well I keep the actual classes in that repo. You can find them in the [cli repo][cli] under `src/core/Roo`. Download that repo and when the Xojo IDE asks you for the location of the various Roo classes, simply navigate to them and select them. You only need to do this once.
 
-4. Comment out the contents of the `PublishMac` and `PublishWin` IDE scripts in the `Build Settings` section of Xojo's navigator. These are only there to help me when I build releases to publish on GitHub. They are not needed for you to build the app and will only generate an error for you.
+### 2. Use the "Xojo Binary Format Project File"
+
+To simplify getting started with the project, I have also included the project saved in Xojo's binary file format. This can be found in `/binary project/Roo IDE.xojo_binary_project`. Simply launch this is Xojo 2019 Release 1.1 or later and you're good to go.
 
 ## Extras
 
